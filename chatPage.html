@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>  <!-- this is the html file that will be served to the clients. -->
+    <head>
+        <meta charset="utf-8" />
+        <title>X-SYSTEMS</title>
+        <link rel="shortcut icon" href="">
+        <!-- <link rel="stylesheet" type="text/css" href="css/chat_style.css"> -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- the line above is a temporary fix until we have a favicon. -->
+    </head>
+    <body>
+      <div id="topPane" class="toppane">
+              <h1 style="font-size:200%; color:purple; text-align:center;"> X-SYSTEMS APP</h1>
+      </div>
+      <div id="sideNav" class="sidenav">
+          <div id="onlineUsers">
+              <h1 style="font-size:100%; color:white; text-align:center;">ONLINE USERS</h1>
+          </div>
+          <br>
+          <div id="availableRooms">
+              <h1 style="font-size:100%; color:white; text-align:center;">AVAILABLE ROOMS</h1>
+              <a href="#" id="conferenceRoomHeaderinFriendsBar" class="conferenceRoomHeader" style="font-size:80%; color:#818181; text-align:center;">Conference room</a>
+              <div id="roomsOfme">
+
+              </div>
+          </div>
+          <!-- <br> -->
+          <!-- <button id="createGroupButton" style="margin: 0 auto; display: block;">Create new room</button> -->
+
+          <br>
+          <br>
+          <br>
+          <div  id="theTempUsernameBox" style="display:inline-block; text-align:center;">
+            <form>
+              <label for="username" style="color:white;">Username:</label><br>
+              <input type="text" id="username" name="username"><br>
+              <!-- <label for="targetUsername">who do you want to call:</label><br> -->
+              <!-- <input type="text" id="targetUsername" name="targetUsername"><br> -->
+            </form>
+            <br>
+            <button id="submitButton">Connect to Server</button>
+            <!-- <button id="createGroupButton" disabled>Create Now Group</button>
+            <button id="createVideoBroadcastingButton" disabled>Create Video Broadcasting Group</button> -->
+            <button id="createVideoConferenceButton" disabled>Create Conference</button>
+          </div>
+
+      </div>
+      <div class="main">
+        <h1 id="websiteTitle">X-SYSTEMS APP</h1>
+        <h2 id="remoteUserTitle"></h1>
+        <!-- display the user's username and password -->
+        <!-- <video id="remoteVideo1" autoplay playsinline></video> -->
+        <!-- <video id="remoteVideo2" autoplay playsinline></video> -->
+        <br>
+
+        <br>
+        <!-- <div id="chatTextAreaAndButtons" class="chatTextAreaAndButtons" style="display:none;">
+          <div class="messagesBox">
+            <div class="messageContainer_sender">
+              <img src="" alt="Avatar">
+              <p>Hello. How are you today?</p>
+              <span class="time-right">11:00</span>
+            </div>
+            <div class="messageContainer_receiver">
+              <img src="" alt="Avatar">
+              <p>Fine, thank you.</p>
+              <span class="time-right">11:00</span>
+            </div>
+            <div class="messageContainer_sender">
+              <img src="" alt="Avatar">
+              <p>Cool</p>
+              <span class="time-right">11:00</span>
+            </div>
+          </div>
+          <br>
+          <textarea rows="4" cols="50" name="typeMessage" form="usrform">
+            Enter text here...</textarea>
+          <br>
+          <button id="sendMessageButton">Send</button>
+        </div> -->
+      </div>
+      <div id="videoPane" class="videopane" style = "display:none">
+          <div id="videosContainer" class="videosContainer">
+              <!-- <h1 style="font-size:50%; color:white; text-align:center;">Videos go here</h1> -->
+              <div id="videoPaneButtonGroup" style="text-align: center; vertical-align: middle;">
+                  <!-- <button id="startButton">Start capturing video</button> -->
+                  <button id="voiceCallButton"> Voice Call</button>
+                  <button id="videoCallButton"> Video Call</button>
+                  <div id="leaderRole" style="display: none;">
+                    <h3>You are a leader of this group</h3>
+                    <button id="addParticipantBtn" >add participant</button>
+                    <button id="removeParticipantBtn" >remove participant</button>
+                  </div>
+                  
+                  <!-- <button id="hangupButton">Hang Up</button> -->
+              </div>
+              <br>
+              <br>
+          </div>
+      </div>
+      <!-- Phone ringing modal -->
+      <div id="phoneRingingModal" class="modal">
+        <div id="videosDiv" style="width:100%;">
+          <video id="localVideo" class="localVideo" autoplay playsinline muted></video>
+        </div>
+        <p id="phoneRingingModalText" style="color:white; text-align:center;"></p>
+        <!-- The Close Button -->
+        <!-- <span class="close">&times;</span> -->
+        <!-- Modal Content (The Image) -->
+        <div style="text-align: center;">
+          <img class="modal-content" id="pickUpCallImageButton" src="accept_call.png" style="display:inline-block;">
+          <img class="modal-content" id="declineCallImageButton" src="end_call.png" style="display:inline-block;">
+        </div>
+        <div style="text-align: center;">
+          <img class="modal-content" id="endCallImageButton" src="end_call.png" style="display:none;">
+        </div>
+        <!-- Modal Caption (Image Text) -->
+        <!-- <div id="caption"></div> -->
+      </div>
+      <div id="createGroupModal" class="modal">
+        <div class="modal-content">
+          <div class="row">
+            <label>Group Name:</label><input type="text" id="groupName">
+          </div>
+          <div class="row">
+            <label for="groupType">Group type:</label>
+            <select id="groupType">
+              <option value="videoConference">Video Conference</option>
+              <option value="voiceConference">Voice Conference</option>
+            </select>
+          </div>
+          <!-- <div class="row">
+            <label>Group Type: <span id="groupType"></span></label>
+          </div>
+          <div class="row">
+            <label>Maximum number of members:<span id="maxNumOfGroup"></span></label>
+          </div> -->
+          <form id="availableUsers">
+          </form>
+          <div class="row">
+            <button id="createButton">Create</button>
+            <button id="createGroupModalCancelButton">Cancel</button>
+          </div>          
+        </div>
+      </div>
+      <div id="addParticipant" style="color: wheat;" class="modal">
+        <div class="modal-content">
+          <h3>Select Users who to add</h3>
+          <div id="addUsersDiv">
+  
+          </div>
+          <button id="addParticipantToRoom">Add</button>
+          <button id="addParticipantCancelBtn">Cancel</button>
+        </div>
+        
+      </div>
+      <div id="removeParticipant" style="color: wheat;" class="modal">
+        <div class="modal-content">
+          <h3>Select Users who to remove</h3>
+          <div id="removeUsersDiv">
+  
+          </div>
+          <button id="removeParticipantFromRoom">Remove</button>
+          <button id="removeParticipantCancelBtn">Cancel</button>
+        </div>
+        
+      </div>
+      <div id="videoConferencePage" class="pane" style="display: none;">
+        <div id="video_container"></div>
+        <input type="button" value="Quit Conference Room" id="quit" class="btn btn-danger btn-default btn-block">
+      </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="js/client.js"></script>
+        <script type="text/javascript" src="https://api.bistri.com/bistri.conference.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>  <!-- this is the html file that will be served to the clients. -->
+    <head>
+        <meta charset="utf-8" />
+        <title>X-SYSTEMS</title>
+        <link rel="shortcut icon" href="">
+        <!-- the line above is a temporary fix until we have a favicon. -->
+    </head>
+    <body>
+        <h1>Users will login here</h1>
+        <p>If log in is successful, the server will give the user a token to be used instead of localUsername.</p>
+        <!-- <video id="localVideo" autoplay playsinline></video> -->
+        <!-- <video id="remoteVideo1" autoplay playsinline></video> -->
+        <!-- <video id="remoteVideo2" autoplay playsinline></video> -->
+        <!-- <div> -->
+            <!-- <button id="startButton">Start capturing video</button> -->
+            <!-- <button id="callButton">Call</button> -->
+            <!-- <button id="hangupButton">Hang Up</button> -->
+        <!-- </div> -->
+        <br>
+        <div>
+          <form>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <!-- <label for="targetUsername">who do you want to call:</label><br> -->
+            <!-- <input type="text" id="targetUsername" name="targetUsername"><br> -->
+          </form>
+          <br>
+          <!-- <button id="loginButton">Log in</button> -->
+          <input type="button" id="loginButton" onclick="location.href='chatPage.html';" value="Login" />
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+        <!-- <script src="js/client.js"></script> -->
+    </body>
+</html>
